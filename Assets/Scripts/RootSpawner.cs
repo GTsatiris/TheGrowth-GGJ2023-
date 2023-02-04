@@ -13,6 +13,8 @@ public class RootSpawner : MonoBehaviour
     private float lowerBound;
     private float upperBound;
 
+    private List<GameObject> objects;
+
     [HideInInspector]
     public Transform NextSpawningPoint;
 
@@ -24,6 +26,7 @@ public class RootSpawner : MonoBehaviour
         GameObject newRoot = Instantiate(RootPrefab, NextSpawningPoint);
         NextSpawningPoint = newRoot.transform.GetChild(1);
         StartCoroutine("SpawningRoutine");
+        objects = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class RootSpawner : MonoBehaviour
             else
                 state++;
         }
+
     }
 
     IEnumerator SpawningRoutine()
@@ -45,6 +49,18 @@ public class RootSpawner : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
             GameObject newRoot = Instantiate(RootPrefab, NextSpawningPoint.position, Quaternion.identity);
             newRoot.transform.position += NextSpawningPoint.position - newRoot.transform.GetChild(0).position;
+            if (objects.Count < 60) {
+                Debug.Log(objects.Count);
+                objects.Add(newRoot);
+            }else{
+                for (int i = 0; i < 20; i++) {
+                    GameObject obj = objects[i];
+                    objects.RemoveAt(i);
+                    Destroy(obj);
+                }
+            }
+
+
             float randomRotation = 0.0f;
             if(state==0)
             {
