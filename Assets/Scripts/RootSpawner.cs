@@ -67,7 +67,7 @@ public class RootSpawner : MonoBehaviour
             else
                 randomFlip = 1.0f;
             newRoot.transform.localScale = new Vector3(randomFlip * randomScale, randomScale, 1.0f);
-            newRoot.transform.SetParent(NextSpawningPoint);
+            //newRoot.transform.SetParent(NextSpawningPoint);
             int spawningPointIdx;
             if (Random.value < 0.5)
                 spawningPointIdx = 1;
