@@ -40,10 +40,10 @@ public class SoundManager : MonoBehaviour
             
 
         }else if(nextScene.name == "IntroScene" || nextScene.name == "CreditsScene") {
-            if (!audioSource.isPlaying) {
+            
                 audioSource.clip = songs[0];
                 audioSource.Play();
-            }
+            
         }
     }
 }
