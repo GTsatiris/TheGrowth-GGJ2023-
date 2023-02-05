@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,7 +25,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject Camera;
     public GameObject TreeUI;
-
+    public Image health;
+    public TMP_Text score;
+    public GameObject Canvas;
     private float startOfTimer;
 
     private bool timeStarted;
@@ -50,6 +53,8 @@ public class GameManager : MonoBehaviour
 
             Level();
             Score();
+            health.fillAmount = timeBudget / maxTime;
+            score.text = Mathf.RoundToInt(food).ToString();
         }
     }
 
@@ -65,6 +70,9 @@ public class GameManager : MonoBehaviour
         }
         if (timeBudget <= 0) {
             SceneManager.LoadScene("IntroScene");
+        }
+        if(timeBudget >= maxTime) {
+            timeBudget = maxTime;
         }
     }
 
@@ -97,6 +105,7 @@ public class GameManager : MonoBehaviour
         CameraController cc = Camera.GetComponent<CameraController>();
         cc.enabled = true;
         TreeUI.SetActive(true);
+        Canvas.SetActive(true);
         startOfTimer = Time.time;
         timeStarted = true;
     }
