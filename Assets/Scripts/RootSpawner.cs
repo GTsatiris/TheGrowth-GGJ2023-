@@ -17,7 +17,7 @@ public class RootSpawner : MonoBehaviour
 
     [HideInInspector]
     public Transform NextSpawningPoint;
-
+    public GameObject RootParent;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +50,7 @@ public class RootSpawner : MonoBehaviour
             GameObject newRoot = Instantiate(RootPrefab, NextSpawningPoint.position, Quaternion.identity);
             newRoot.transform.position += NextSpawningPoint.position - newRoot.transform.GetChild(0).position;
             if (objects.Count < 60) {
-                Debug.Log(objects.Count);
+                //Debug.Log(objects.Count);
                 objects.Add(newRoot);
             }else{
                 for (int i = 0; i < 20; i++) {
@@ -83,7 +83,7 @@ public class RootSpawner : MonoBehaviour
             else
                 randomFlip = 1.0f;
             newRoot.transform.localScale = new Vector3(randomFlip * randomScale, randomScale, 1.0f);
-            //newRoot.transform.SetParent(NextSpawningPoint);
+            newRoot.transform.SetParent(RootParent.transform);
             int spawningPointIdx;
             if (Random.value < 0.5)
                 spawningPointIdx = 1;
