@@ -6,6 +6,8 @@ TagManager:
   tags:
   - skata
   - food
+  - good
+  - bad
   layers:
   - Default
   - TransparentFX

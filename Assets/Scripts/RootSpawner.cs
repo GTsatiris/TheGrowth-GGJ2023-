@@ -10,8 +10,6 @@ public class RootSpawner : MonoBehaviour
     string key;
 
     private int state;
-    private float lowerBound;
-    private float upperBound;
 
     private List<GameObject> objects;
 
@@ -60,19 +58,18 @@ public class RootSpawner : MonoBehaviour
                 }
             }
 
-
             float randomRotation = 0.0f;
             if(state==0)
             {
-                randomRotation = Random.Range(-25.0f, 25.0f);
+                randomRotation = Random.Range(-20.0f, 20.0f);
             }
             else if(state == 1)
             {
-                randomRotation = Random.Range(-50.0f, 0.0f);
+                randomRotation = Random.Range(-65.0f, -25.0f);
             }
             else if(state == 2)
             {
-                randomRotation = Random.Range(0.0f, 50.0f);
+                randomRotation = Random.Range(25.0f, 65.0f);
             }
 
             newRoot.transform.rotation = Quaternion.AngleAxis(randomRotation, Vector3.forward);
