@@ -39,11 +39,17 @@ public class SoundManager : MonoBehaviour
                 audioSource.Play();
             
 
-        }else if(nextScene.name == "IntroScene" || nextScene.name == "CreditsScene") {
+        }else if(nextScene.name == "IntroScene"){
             
                 audioSource.clip = songs[0];
                 audioSource.Play();
-            
+
+        }
+        else if (nextScene.name == "CreditsScene") {
+            if (!audioSource.isPlaying) {
+                audioSource.clip = songs[0];
+                audioSource.Play();
+            }
         }
     }
 }

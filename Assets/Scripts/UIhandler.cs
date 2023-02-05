@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class UIhandler : MonoBehaviour
 {
+        public GameObject IntroPanel;
+        public GameObject CreditsPanel;
         public void Play()
         {
             SceneManager.LoadScene("GameScene");
@@ -12,13 +14,15 @@ public class UIhandler : MonoBehaviour
 
         public void Credits()
         {
-            SceneManager.LoadScene("CreditsScene");
+            CreditsPanel.SetActive(true);
+            IntroPanel.SetActive(false);
         }
 
         public void Back()
         {
-            SceneManager.LoadScene("IntroScene");
-        }
+        CreditsPanel.SetActive(false);
+        IntroPanel.SetActive(true);
+    }
         public void QuitGame() {
             Application.Quit();
         }
