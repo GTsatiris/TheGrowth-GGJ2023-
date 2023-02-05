@@ -8,7 +8,7 @@ public class MenuSounds : MonoBehaviour
     public AudioClip[] sounds;
 
     private void Awake() {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.Find("Fx").GetComponent<AudioSource>();
     }
     public void Hover() {
         audioSource.PlayOneShot(sounds[0]);
