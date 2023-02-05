@@ -19,5 +19,8 @@ public class UIhandler : MonoBehaviour
         {
             SceneManager.LoadScene("IntroScene");
         }
+        public void QuitGame() {
+            Application.Quit();
+        }
 
 }
