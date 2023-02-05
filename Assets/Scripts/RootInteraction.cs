@@ -23,7 +23,8 @@ public class RootInteraction : MonoBehaviour
             { 
                 gameManager.bonusBin += 50;
                 isDead = true;
-                StartCoroutine(SelfDestruct(collision.gameObject));
+                Destroy(collision.gameObject);
+                //StartCoroutine(SelfDestruct(collision.gameObject));
             }
         }
         else if (collision.gameObject.CompareTag("bad")) {
@@ -31,12 +32,13 @@ public class RootInteraction : MonoBehaviour
             {
                 gameManager.bonusBin -= 50;
                 isDead = true;
-                StartCoroutine(SelfDestruct(collision.gameObject));
+                Destroy(collision.gameObject);
+                //StartCoroutine(SelfDestruct(collision.gameObject));
             }
         }
     }
-    IEnumerator SelfDestruct(GameObject gameobject) {
-        yield return new WaitForSeconds(0.5f);
-        Destroy(gameobject);
-    }
+    //IEnumerator SelfDestruct(GameObject gameobject) {
+    //    yield return new WaitForSeconds(0.5f);
+    //    Destroy(gameobject);
+    //}
 }

@@ -47,7 +47,7 @@ public class RootSpawner : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
             GameObject newRoot = Instantiate(RootPrefab, NextSpawningPoint.position, Quaternion.identity);
             newRoot.transform.position += NextSpawningPoint.position - newRoot.transform.GetChild(0).position;
-            if (objects.Count < 60) {
+            if (objects.Count < 200) {
                 //Debug.Log(objects.Count);
                 objects.Add(newRoot);
             }else{
