@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject tree3;
 
     public GameObject Camera;
+    public GameObject TreeUI;
 
     private float startOfTimer;
 
@@ -61,7 +64,7 @@ public class GameManager : MonoBehaviour
             level = 3;
         }
         if (timeBudget <= 0) {
-            //die
+            SceneManager.LoadScene("IntroScene");
         }
     }
 
@@ -93,6 +96,7 @@ public class GameManager : MonoBehaviour
 
         CameraController cc = Camera.GetComponent<CameraController>();
         cc.enabled = true;
+        TreeUI.SetActive(true);
         startOfTimer = Time.time;
         timeStarted = true;
     }

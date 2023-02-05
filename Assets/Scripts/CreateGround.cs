@@ -23,7 +23,7 @@ public class CreateGround : MonoBehaviour
                 noiseMap[x, y] = perlinValue;
 
                 if (perlinValue < threshold) {
-                    Vector3 spawnPosition = new Vector3(-x+21f , -y+1.55f, 0);
+                    Vector3 spawnPosition = new Vector3(-x+21f , -y+1.55f, 1);
                     //Vector3 spawnPosition = spawn.transform.position;
                     GameObject instObj = Instantiate(tile, spawnPosition, Quaternion.identity);
                     instObj.transform.parent = gameObject.transform;
