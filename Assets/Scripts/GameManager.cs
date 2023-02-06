@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
 {
     public int level = 2;
     public float timePassed;
-    public float startTime = 150;
+    public float startTime;
     public float timeBudget;
     public float bonusBin;
     public float maxTime;
     public float food;
+
+    public int pointsPerSecond;
 
     public float levelOneMult = 0.5f;
     public float levelTwoMult = 1f;
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
     private float startOfTimer;
 
     private bool timeStarted;
+    private float levelMultiplyer;
 
     // Start is called before the first frame update
     void Start()
@@ -38,14 +41,20 @@ public class GameManager : MonoBehaviour
         timeStarted = false;
         timeBudget = startTime;
         bonusBin = 0;
+        levelMultiplyer = levelTwoMult;
         StartCoroutine("StartCameraFollow");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timeStarted)
-        { 
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("IntroScene");
+        }
+        
+        if (timeStarted)
+        {
             timePassed = Time.time - startOfTimer;
             //timePassed = (Time.time - startTime) * -1;
 
@@ -58,43 +67,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Level() {
-        if (timeBudget <= 100) {
+    public void Level()
+    {
+        if (timeBudget <= 60)
+        {
             level = 1;
+            levelMultiplyer = levelOneMult;
+            tree1.SetActive(true);
+            tree2.SetActive(false);
+            tree3.SetActive(false);
         }
-        else if (timeBudget <= 200) {
+        else if ((timeBudget > 60) && (timeBudget <= 120))
+        {
             level = 2;
+            levelMultiplyer = levelTwoMult;
+            tree1.SetActive(false);
+            tree2.SetActive(true);
+            tree3.SetActive(false);
         }
-        else if (timeBudget > 200) {
+        else
+        {
             level = 3;
+            levelMultiplyer = levelThreeMult;
+            tree1.SetActive(false);
+            tree2.SetActive(false);
+            tree3.SetActive(true);
         }
-        if (timeBudget <= 0) {
+        if (timeBudget <= 0)
+        {
             SceneManager.LoadScene("IntroScene");
         }
-        if(timeBudget >= maxTime) {
+        if (timeBudget >= maxTime)
+        {
             timeBudget = maxTime;
         }
     }
 
-    public void Score() {
-        if(level == 1) {
-            food += levelOneMult;
-            tree1.SetActive(true);
-            tree2.SetActive(false);
-            tree3.SetActive(false);
-
-        }
-        else if (level == 2) {
-            food += levelTwoMult;
-            tree1.SetActive(false);
-            tree2.SetActive(true);
-            tree3.SetActive(false);
-        }
-        else if (level == 3) {
-            food += levelThreeMult;
-            tree1.SetActive(false);
-            tree2.SetActive(true);
-            tree3.SetActive(true);
+    IEnumerator Score()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f);
+            food += pointsPerSecond * levelMultiplyer;
         }
     }
 
@@ -108,5 +122,6 @@ public class GameManager : MonoBehaviour
         Canvas.SetActive(true);
         startOfTimer = Time.time;
         timeStarted = true;
+        StartCoroutine("Score");
     }
 }

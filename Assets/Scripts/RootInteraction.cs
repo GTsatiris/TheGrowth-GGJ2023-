@@ -21,7 +21,7 @@ public class RootInteraction : MonoBehaviour
         if (collision.gameObject.CompareTag("good")) {
             if(!isDead)
             { 
-                gameManager.bonusBin += 50;
+                gameManager.bonusBin += 15;
                 isDead = true;
                 Destroy(collision.gameObject);
                 //StartCoroutine(SelfDestruct(collision.gameObject));
@@ -30,7 +30,7 @@ public class RootInteraction : MonoBehaviour
         else if (collision.gameObject.CompareTag("bad")) {
             if (!isDead)
             {
-                gameManager.bonusBin -= 50;
+                gameManager.bonusBin -= 15;
                 isDead = true;
                 Destroy(collision.gameObject);
                 //StartCoroutine(SelfDestruct(collision.gameObject));

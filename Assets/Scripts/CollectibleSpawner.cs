@@ -57,7 +57,7 @@ public class CollectibleSpawner : MonoBehaviour
             switch (state)
             {
                 case 1:
-                    if (Random.value < 0.25)
+                    if (Random.value < 0.3)
                         Instantiate(BadCollectible, spawnPosition, Quaternion.identity);
                     else
                         Instantiate(GoodCollectible, spawnPosition + new Vector3(0.0f, 0.0f, -1.0f), Quaternion.identity);
@@ -69,7 +69,7 @@ public class CollectibleSpawner : MonoBehaviour
                         Instantiate(GoodCollectible, spawnPosition + new Vector3(0.0f, 0.0f, -1.0f), Quaternion.identity);
                     break;
                 case 3:
-                    if (Random.value < 0.75)
+                    if (Random.value < 0.7)
                         Instantiate(BadCollectible, spawnPosition, Quaternion.identity);
                     else
                         Instantiate(GoodCollectible, spawnPosition + new Vector3(0.0f, 0.0f, -1.0f), Quaternion.identity);
