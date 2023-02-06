@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     public GameObject tree3;
 
     public GameObject Camera;
-    public GameObject TreeUI;
     public Image health;
     public TMP_Text score;
     public GameObject Canvas;
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private bool timeStarted;
     private float levelMultiplyer;
+
+    public GameObject TreeCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             SceneManager.LoadScene("IntroScene");
@@ -65,10 +67,12 @@ public class GameManager : MonoBehaviour
             health.fillAmount = timeBudget / maxTime;
             score.text = Mathf.RoundToInt(food).ToString();
         }
+        
     }
 
     public void Level()
     {
+        
         if (timeBudget <= 60)
         {
             level = 1;
@@ -76,6 +80,7 @@ public class GameManager : MonoBehaviour
             tree1.SetActive(true);
             tree2.SetActive(false);
             tree3.SetActive(false);
+
         }
         else if ((timeBudget > 60) && (timeBudget <= 120))
         {
@@ -84,6 +89,7 @@ public class GameManager : MonoBehaviour
             tree1.SetActive(false);
             tree2.SetActive(true);
             tree3.SetActive(false);
+
         }
         else
         {
@@ -92,6 +98,7 @@ public class GameManager : MonoBehaviour
             tree1.SetActive(false);
             tree2.SetActive(false);
             tree3.SetActive(true);
+
         }
         if (timeBudget <= 0)
         {
@@ -114,11 +121,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartCameraFollow()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(4.0f);
 
         CameraController cc = Camera.GetComponent<CameraController>();
         cc.enabled = true;
-        TreeUI.SetActive(true);
+        TreeCamera.SetActive(true);
         Canvas.SetActive(true);
         startOfTimer = Time.time;
         timeStarted = true;

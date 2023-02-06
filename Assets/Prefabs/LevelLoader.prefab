@@ -382,7 +382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &121651599220613711
 RectTransform:
   m_ObjectHideFlags: 0
@@ -671,5 +671,5 @@ MonoBehaviour:
   IntroPanel: {fileID: 0}
   CreditsPanel: {fileID: 0}
   transition: {fileID: 373790486}
-  transitionTime: 1
-  loading: {fileID: 0}
+  transitionTime: 5
+  loading: {fileID: 4580346572487525966}
