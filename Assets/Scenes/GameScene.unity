@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -158, y: -152}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: -200, y: -200}
+  m_SizeDelta: {x: 485, y: 485}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1765936
 MonoBehaviour:
@@ -2071,10 +2071,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2970,8 +2970,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb9c68bd34757f4db08b9e89c37938d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner1: {fileID: 971705673}
-  spawner2: {fileID: 1549686296}
+  spawners:
+  - {fileID: 971705673}
+  - {fileID: 185502838}
+  - {fileID: 1549686296}
   speed: 5
   cameraHandicap: 1.5
 --- !u!114 &519420034
@@ -5771,11 +5773,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 2
   timePassed: 0
-  startTime: 150
+  startTime: 100
   timeBudget: 0
   bonusBin: 0
-  maxTime: 500
+  maxTime: 180
   food: 0
+  pointsPerSecond: 10
   levelOneMult: 0.5
   levelTwoMult: 1
   levelThreeMult: 2
@@ -16649,8 +16652,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 172, y: -152}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: 200, y: -200}
+  m_SizeDelta: {x: 485, y: 485}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1625890897
 MonoBehaviour:

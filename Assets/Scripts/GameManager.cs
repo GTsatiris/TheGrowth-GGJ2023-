@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
 {
     public int level = 2;
     public float timePassed;
-    public float startTime = 150;
+    public float startTime = 100;
     public float timeBudget;
     public float bonusBin;
     public float maxTime;
     public float food;
+
+    public int pointsPerSecond;
 
     public float levelOneMult = 0.5f;
     public float levelTwoMult = 1f;
@@ -44,8 +46,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeStarted)
-        { 
+        if (timeStarted)
+        {
             timePassed = Time.time - startOfTimer;
             //timePassed = (Time.time - startTime) * -1;
 
@@ -58,42 +60,52 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Level() {
-        if (timeBudget <= 100) {
+    public void Level()
+    {
+        if (timeBudget <= 60)
+        {
             level = 1;
         }
-        else if (timeBudget <= 200) {
+        else if ((timeBudget > 60) && (timeBudget <= 120))
+        {
             level = 2;
         }
-        else if (timeBudget > 200) {
+        else
+        {
             level = 3;
         }
-        if (timeBudget <= 0) {
+        if (timeBudget <= 0)
+        {
             SceneManager.LoadScene("IntroScene");
         }
-        if(timeBudget >= maxTime) {
+        if (timeBudget >= maxTime)
+        {
             timeBudget = maxTime;
         }
     }
 
-    public void Score() {
-        if(level == 1) {
-            food += levelOneMult;
+    public void Score()
+    {
+        if (level == 1)
+        {
+            food = (Time.time - startOfTimer) * (pointsPerSecond * levelOneMult);
             tree1.SetActive(true);
             tree2.SetActive(false);
             tree3.SetActive(false);
 
         }
-        else if (level == 2) {
-            food += levelTwoMult;
+        else if (level == 2)
+        {
+            food = (Time.time - startOfTimer) * (pointsPerSecond * levelTwoMult);
             tree1.SetActive(false);
             tree2.SetActive(true);
             tree3.SetActive(false);
         }
-        else if (level == 3) {
-            food += levelThreeMult;
+        else if (level == 3)
+        {
+            food = (Time.time - startOfTimer) * (pointsPerSecond * levelThreeMult);
             tree1.SetActive(false);
-            tree2.SetActive(true);
+            tree2.SetActive(false);
             tree3.SetActive(true);
         }
     }
